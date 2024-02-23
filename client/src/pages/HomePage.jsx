@@ -3,19 +3,19 @@ import BubbleLine from '../components/HomePage/BubbleLine';
 
 const HomePage = () => {
     const [obstacles, setObstacles] = useState([
-        { x: 55, y: 20, r: 10 },
-        { x: 25, y: 10, r: 20 },
-        { x: 35, y: 25, r: 15 }
+        // { x: 55, y: 20, r: 10 },
+        // { x: 25, y: 10, r: 20 },
+        // { x: 35, y: 25, r: 15 }
     ]);
     const [newObstacle, setNewObstacle] = useState({ x: '', y: '', r: '' });
 
-    const [startingPosition, setStartingPosition] = useState({ x: '', y: '' });
-    const [endPosition, setEndPosition] = useState({ x: '', y: '' });
+    const [startingPosition, setStartingPosition] = useState({ x: '0', y: '0', r: '8' });
+    const [endPosition, setEndPosition] = useState({ x: '0', y: '0', r: '8' });
 
     const [positions, setPositions] = useState([
-        { x: 10, y: 20 },
-        { x: 15, y: 10 },
-        { x: 30, y: 25 },
+        // { x: 10, y: 20 },
+        // { x: 15, y: 10 },
+        // { x: 30, y: 25 },
     ])
     const handleObstacleChange = (e) => {
         const { name, value } = e.target;
@@ -40,79 +40,76 @@ const HomePage = () => {
 
     return (
         <>
-            <div className="w-full p-10">
-                <h1 className='text-3xl text-blue-500 font-bold text-center mb-5'>Positions</h1>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-10">
-                    {/* Starting Position Form */}
-                    <form className="col-span-1 space-y-4">
-                        <h2 className='text-xl text-center text-gray-700 font-semibold mb-2'>Starting Position</h2>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div>
-                                <label className="block mb-1">
-                                    X Coordinate:
-                                    <input
-                                        type="number"
-                                        name="xStart"
-                                        value={startingPosition.x}
-                                        onChange={(e) => setStartingPosition({ ...startingPosition, x: e.target.value })}
-                                        className="block w-full border border-gray-300 rounded px-3 py-2 mt-1"
-                                    />
-                                </label>
-                            </div>
-                            <div>
-                                <label className="block mb-1">
-                                    Y Coordinate:
-                                    <input
-                                        type="number"
-                                        name="yStart"
-                                        value={startingPosition.y}
-                                        onChange={(e) => setStartingPosition({ ...startingPosition, y: e.target.value })}
-                                        className="block w-full border border-gray-300 rounded px-3 py-2 mt-1"
-                                    />
-                                </label>
-                            </div>
-                        </div>
-                    </form>
-
-                    {/* Destination Position Form */}
-                    <form className="col-span-1 space-y-4">
-                        <h2 className='text-xl text-center text-gray-700 font-semibold mb-2'>Destination Position</h2>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div>
-                                <label className="block mb-1">
-                                    X Coordinate:
-                                    <input
-                                        type="number"
-                                        name="xEnd"
-                                        value={endPosition.x}
-                                        onChange={(e) => setEndPosition({ ...endPosition, x: e.target.value })}
-                                        className="block w-full border border-gray-300 rounded px-3 py-2 mt-1"
-                                    />
-                                </label>
-                            </div>
-                            <div>
-                                <label className="block mb-1">
-                                    Y Coordinate:
-                                    <input
-                                        type="number"
-                                        name="yEnd"
-                                        value={endPosition.y}
-                                        onChange={(e) => setEndPosition({ ...endPosition, y: e.target.value })}
-                                        className="block w-full border border-gray-300 rounded px-3 py-2 mt-1"
-                                    />
-                                </label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
 
             <div className='grid md:grid-cols-2'>
-                <div>
-                    <BubbleLine bubbleData={obstacles} lineData={positions} />
-                </div>
                 <div className='flex justify-center items-center flex-col p-10'>
+                    <div className="w-full p-10">
+                        <h1 className='text-3xl text-blue-500 font-bold text-center mb-5'>Positions</h1>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-10">
+                            {/* Starting Position Form */}
+                            <form className="col-span-1 space-y-4">
+                                <h2 className='text-xl text-center text-gray-700 font-semibold mb-2'>Starting Position</h2>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block mb-1">
+                                            X Coordinate:
+                                            <input
+                                                type="number"
+                                                name="xStart"
+                                                value={startingPosition.x}
+                                                onChange={(e) => setStartingPosition({ ...startingPosition, x: e.target.value })}
+                                                className="block w-full border border-gray-300 rounded px-3 py-2 mt-1"
+                                            />
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label className="block mb-1">
+                                            Y Coordinate:
+                                            <input
+                                                type="number"
+                                                name="yStart"
+                                                value={startingPosition.y}
+                                                onChange={(e) => setStartingPosition({ ...startingPosition, y: e.target.value })}
+                                                className="block w-full border border-gray-300 rounded px-3 py-2 mt-1"
+                                            />
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+
+                            {/* Destination Position Form */}
+                            <form className="col-span-1 space-y-4">
+                                <h2 className='text-xl text-center text-gray-700 font-semibold mb-2'>Destination Position</h2>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block mb-1">
+                                            X Coordinate:
+                                            <input
+                                                type="number"
+                                                name="xEnd"
+                                                value={endPosition.x}
+                                                onChange={(e) => setEndPosition({ ...endPosition, x: e.target.value })}
+                                                className="block w-full border border-gray-300 rounded px-3 py-2 mt-1"
+                                            />
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label className="block mb-1">
+                                            Y Coordinate:
+                                            <input
+                                                type="number"
+                                                name="yEnd"
+                                                value={endPosition.y}
+                                                onChange={(e) => setEndPosition({ ...endPosition, y: e.target.value })}
+                                                className="block w-full border border-gray-300 rounded px-3 py-2 mt-1"
+                                            />
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <h1 className='text-3xl text-blue-500 font-bold'>Obstacles</h1>
                     {obstacles.length == 0 &&
                         <>
@@ -179,6 +176,10 @@ const HomePage = () => {
 
                     </div>
 
+                </div>
+
+                <div className='h-full flex justify-center items-center pr-10'>
+                    <BubbleLine bubbleData={obstacles} positionData={[startingPosition, endPosition]} />
                 </div>
             </div>
         </>
