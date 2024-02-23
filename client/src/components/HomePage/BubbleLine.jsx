@@ -33,6 +33,13 @@ const BubbleLine = ({ bubbleData, positionData }) => {
                         data: bubbleData,
                         backgroundColor: 'rgba(255, 99, 132, 0.6)'
                     },
+                                                            // {
+                    //     label: 'Path',
+                    //     data: lineData,
+                    //     // type: 'line',
+                    //     borderColor: 'rgba(54, 162, 235, 0.6)',
+                    //     fill: false,
+                    // },
                     {
                         label: 'Positions',
                         data: positionData,
