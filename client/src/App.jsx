@@ -1,12 +1,7 @@
-import HomePage from "./pages/HomePage"
+import AppRoutes from "./routes/AppRoutes";
 
-function App() {
+const App = () => {
+  return <AppRoutes />;
+};
 
-  return (
-    <>
-      <HomePage />
-    </>
-  )
-}
-
-export default App
+export default App;
