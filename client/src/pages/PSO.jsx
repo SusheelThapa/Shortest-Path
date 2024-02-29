@@ -3,6 +3,7 @@ import Layout from "../layout/Layout";
 import PSOForm from "../components/PSOForm";
 import PSOResult from "../components/PSOResult";
 import CircularLoader from "../components/CircularLoader/CircularLoader";
+import NavBar from "../components/NavBar/NavBar";
 
 const PSO = () => {
   const [loading, setLoading] = useState(false);
@@ -67,11 +68,10 @@ const PSO = () => {
         body: JSON.stringify(formState), // Adjust the body based on your API requirements
       });
 
-
       if (response.ok) {
         const blob = await response.blob();
         const imageUrl = URL.createObjectURL(blob);
-      setResult({ imageUrl });
+        setResult({ imageUrl });
       } else {
         console.error("Error in API call:", response.statusText);
       }
@@ -83,29 +83,34 @@ const PSO = () => {
   };
 
   return (
-    <Layout>
-      <div>Shortest Path Finder</div>
-      <div className="bg-stone-50 rounded-3xl ">
-        <div className="my-10 flex  justify-between items-center">
-          <PSOForm
-            formState={formState}
-            onStartingPositionChange={handleStartingPositionChange}
-            onTargetPositionChange={handleTargetPositionChange}
-            onAddObstacle={handleAddObstacle}
-            onRemoveObstacle={handleRemoveObstacle}
-            onObstacleChange={handleObstacleChange}
-            onPSOSubmit={handlePSOSubmit}
-          />
-          {loading ? (
-            <CircularLoader />
-          ) : result != null ? (
-            <PSOResult imageUrl={result.imageUrl} />
-          ) : (
-            "I love you"
-          )}
+    <>
+      <NavBar />
+      <Layout>
+        <h1 className="text-5xl text-center font-bold text-gray-700">
+          Shortest Path Finder
+        </h1>
+        <div className="bg-stone-50 rounded-3xl ">
+          <div className="my-10 flex  justify-between items-center">
+            <PSOForm
+              formState={formState}
+              onStartingPositionChange={handleStartingPositionChange}
+              onTargetPositionChange={handleTargetPositionChange}
+              onAddObstacle={handleAddObstacle}
+              onRemoveObstacle={handleRemoveObstacle}
+              onObstacleChange={handleObstacleChange}
+              onPSOSubmit={handlePSOSubmit}
+            />
+            {loading ? (
+              <CircularLoader />
+            ) : result != null ? (
+              <PSOResult imageUrl={result.imageUrl} />
+            ) : (
+              "I love you"
+            )}
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 

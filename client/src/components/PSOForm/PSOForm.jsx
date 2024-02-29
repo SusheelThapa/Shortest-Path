@@ -11,7 +11,7 @@ const PSOForm = ({
   return (
     <div className="w-1/2">
       <div className="p-10 px-16 flex flex-col gap-4 w-4/5">
-        <h2 className="text-4xl font-bold mb-4">Pathfinding Configuration</h2>
+        <h2 className="text-2xl font-bold mb-4">Path Finder Configuration</h2>
         <div className="flex gap-5">
           <label htmlFor="startingX" className="sr-only">
             Starting Position x:
@@ -60,6 +60,7 @@ const PSOForm = ({
             onChange={(e) => onTargetPositionChange(e, "y")}
           />
         </div>
+        <hr className="border-gray-200 border-2" />
         <h2 className="text-2xl font-bold mb-2">Obstacle Configuration:</h2>
         {obstacles.map((obstacle, index) => (
           <div key={index} className="flex gap-5">
@@ -112,7 +113,8 @@ const PSOForm = ({
         >
           + Add Obstacle
         </button>
-        <hr />
+        <hr className="border-gray-200 border-2" />
+
         <button
           onClick={onPSOSubmit}
           className=" px-3 py-2 mt-4 text-white text-xl font-extrabold bg-green-500 rounded-md focus:outline-none hover:bg-green-600"
