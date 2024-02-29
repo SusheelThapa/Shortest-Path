@@ -13,10 +13,13 @@ const NavBar = () => {
           </div>
         </Link>
         {/* navigation menu */}
-        <div className="flex justify-end items-center w-full text-2xl">
-          <ul className="flex gap-10  justify-start items-center font-medium">
+        <div className="flex justify-end items-center w-full text-xl">
+          <ul className="flex gap-10  justify-start items-center tracking-wide">
             <li className="hover:text-green-600 cursor-pointer">
               <Link to="/path-finder">Path Finder</Link>
+            </li>
+            <li className="hover:text-green-600 cursor-pointer">
+              <Link to="/sample-result">Sample Result</Link>
             </li>
             <li className="hover:text-green-600 cursor-pointer">
               <Link to="/our-team">Our Team</Link>
