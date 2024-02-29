@@ -8,11 +8,12 @@ class Point(BaseModel):
 
 
 class Circle(BaseModel):
-    center: Point
+    x:int
+    y:int
     radius: int
 
 
 class Data(BaseModel):
-    starting_point: Point
-    target_point: Point
+    startingPosition: Point
+    targetPosition: Point
     obstacles: List[Circle]
