@@ -6,7 +6,7 @@ import CircularLoader from "../components/CircularLoader/CircularLoader";
 
 const PSO = () => {
   const [loading, setLoading] = useState(false);
-  const [result] = useState(null);
+  const [result, setResult] = useState(null);
 
   const [formState, setFormState] = useState({
     startingPosition: { x: "", y: "" },
@@ -58,7 +58,23 @@ const PSO = () => {
     setLoading(true);
 
     try {
-      // Perform PSO logic or API call using formState
+      const response = await fetch("http://127.0.0.1:8000/shortest-path", {
+        method: "POST", // Adjust the method based on your API requirements
+        headers: {
+          "Content-Type": "application/json",
+          // Add any other headers if needed
+        },
+        body: JSON.stringify(formState), // Adjust the body based on your API requirements
+      });
+
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const imageUrl = URL.createObjectURL(blob);
+      setResult({ imageUrl });
+      } else {
+        console.error("Error in API call:", response.statusText);
+      }
     } catch (error) {
       console.error("Error in PSO calculation:", error);
     } finally {
@@ -83,7 +99,7 @@ const PSO = () => {
           {loading ? (
             <CircularLoader />
           ) : result != null ? (
-            <PSOResult />
+            <PSOResult imageUrl={result.imageUrl} />
           ) : (
             "I love you"
           )}

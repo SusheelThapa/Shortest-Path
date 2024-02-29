@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware
 import matplotlib.pyplot as plt
 from io import BytesIO
 
@@ -8,6 +9,14 @@ from obstacles import Obstacle_Circle, Point
 from model import Data
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def plot_graph(best_location, start, end, obstacles):
