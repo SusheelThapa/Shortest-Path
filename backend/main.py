@@ -30,7 +30,7 @@ def plot_graph(best_location, start, end, obstacles):
 
     for circle in obstacles:
         circle_patch = plt.Circle(
-            (circle.center.x, circle.center.y), circle.radius -0.2, fill="red", color="red")
+            (circle.center.x, circle.center.y), circle.radius - 0.2, fill="red", color="red")
         plt.gca().add_patch(circle_patch)
 
     X = [best_location[i][0] for i in range(len(best_location))]
@@ -72,9 +72,9 @@ def generate_optimized_path_image(data: Data):
     ]
 
     best_location = particle_swarm_optimization(
-        max_iterations=500,
-        swarm_size=100,
-        max_vel=4,
+        max_iterations=1000,
+        swarm_size=200,
+        max_vel=3,
         step_size=1,
         inertia=0.9,
         c1=2.05,

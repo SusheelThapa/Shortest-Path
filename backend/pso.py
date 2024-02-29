@@ -1,6 +1,6 @@
 import numpy as np
 from obstacles import Point
-DIM = 12  # Dimension of the path
+DIM = 10  # Dimension of the path
 
 
 def particle_swarm_optimization(
