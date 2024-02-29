@@ -4,6 +4,7 @@ import PSOForm from "../components/PSOForm";
 import PSOResult from "../components/PSOResult";
 import CircularLoader from "../components/CircularLoader/CircularLoader";
 import NavBar from "../components/NavBar/NavBar";
+import Footer from "../components/Footer";
 
 const PSO = () => {
   const [loading, setLoading] = useState(false);
@@ -110,6 +111,7 @@ const PSO = () => {
           </div>
         </div>
       </Layout>
+      <Footer />
     </>
   );
 };
