@@ -1,15 +1,19 @@
+
+import TeamPage from "./pages/TeamPage";
+
 import LandingPage from "./pages/LandingPage"
 import HomePage from "./pages/HomePage"
 
 function App() {
-
   return (
     <>
-      {/* <HomePage /> */}
-      
+
+      <TeamPage />
+  
       <LandingPage/>
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
