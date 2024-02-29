@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
-const BubbleLine = ({ bubbleData, positionData }) => {
+const BubbleLine = ({ bubbleData, positionData, lineData }) => {
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
 
@@ -23,6 +23,15 @@ const BubbleLine = ({ bubbleData, positionData }) => {
         const minBubbleIntensityX = bubbleData.find(data => data.x === minX)?.intensity || 0;
         const minBubbleIntensityY = bubbleData.find(data => data.y === minY)?.intensity || 0;
 
+        const calculateScalingFactor = () => {
+            const { width, height } = myChartref.canvas;
+            const scaleX = width / (maxX - minX);
+            const scaleY = height / (maxY - minY);
+            return Math.min(scaleX, scaleY);
+        };
+    
+        // Calculate the scaling factor
+        const scalingFactor = calculateScalingFactor();
 
         chartInstance.current = new Chart(myChartref, {
             type: 'bubble',
@@ -30,13 +39,17 @@ const BubbleLine = ({ bubbleData, positionData }) => {
                 datasets: [
                     {
                         label: 'Obstacle',
-                        data: bubbleData,
+                    data: bubbleData.map(data => ({
+                        x: data.x,
+                        y: data.y,
+                        r: data.r * scalingFactor,
+                    })),
                         backgroundColor: 'rgba(255, 99, 132, 0.6)'
                     },
-                                                            // {
+                    // {                                       // {
                     //     label: 'Path',
                     //     data: lineData,
-                    //     // type: 'line',
+                    //     type: 'line',
                     //     borderColor: 'rgba(54, 162, 235, 0.6)',
                     //     fill: false,
                     // },
