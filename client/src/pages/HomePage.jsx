@@ -12,11 +12,14 @@ const HomePage = () => {
     const [startingPosition, setStartingPosition] = useState({ x: '0', y: '0', r: '8' });
     const [endPosition, setEndPosition] = useState({ x: '0', y: '0', r: '8' });
 
-    const [positions, setPositions] = useState([
-        // { x: 10, y: 20 },
-        // { x: 15, y: 10 },
-        // { x: 30, y: 25 },
+    const [lineData, setPositions] = useState([
+        startingPosition,
+        { x: 10, y: 20 },
+        { x: 15, y: 10 },
+        { x: 30, y: 25 },
+        endPosition,
     ])
+    
     const handleObstacleChange = (e) => {
         const { name, value } = e.target;
         setNewObstacle({ ...newObstacle, [name]: value });
@@ -37,12 +40,15 @@ const HomePage = () => {
         setObstacles(updatedObstacles);
     }
 
+    const handleGetShortestPath = () =>{
+
+    }
 
     return (
         <>
 
             <div className='grid md:grid-cols-2'>
-                <div className='flex justify-center items-center flex-col p-10'>
+                <div className='flex justify-center items-center flex-col md:p-10'>
                     <div className="w-full p-10">
                         <h1 className='text-3xl text-blue-500 font-bold text-center mb-5'>Positions</h1>
 
@@ -116,15 +122,20 @@ const HomePage = () => {
                             <div className='text-gray-500 mt-5'>No obstacles available to display.</div>
                         </>}
                     {obstacles.map((obstacle, index) => (
-                        <div key={index} className='grid md:grid-cols-4 gap-5 justify-center items-center m-5'>
-                            <h1 className='text-xl'>X-coordinate:<span className='text-xl text-red-800 font-bold'> {obstacle.x} </span></h1>
-                            <h1 className='text-xl'>Y-coordinate:<span className='text-xl text-red-800 font-bold'> {obstacle.y}</span></h1>
-                            <h1 className='text-xl'>Intensity:<span className='text-xl text-red-800 font-bold'> {obstacle.r}</span></h1>
-                            <button className='bg-red-500 text-xl text-white w-24 h-8 rounded-lg' onClick={() => { handleDelete(index) }}>Delete</button>
+                        <>
+                        <div key={index} className='rounded-lg p-4 mb-4 md:flex md:items-center md:justify-between md:gap-4'>
+                            <div className='md:flex md:gap-4 md:flex-1 md:items-center'>
+                                <h1 className='text-xl md:text-lg font-semibold'>X-coordinate: <span className='text-red-800'>{obstacle.x}</span></h1>
+                                <h1 className='text-xl md:text-lg font-semibold'>Y-coordinate: <span className='text-red-800'>{obstacle.y}</span></h1>
+                                <h1 className='text-xl md:text-lg font-semibold'>Intensity: <span className='text-red-800'>{obstacle.r}</span></h1>
+                            </div>
+                            <button className='bg-red-500 text-lg md:text-base text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors' onClick={() => { handleDelete(index) }}>Delete</button>
                         </div>
+                        </>
                     ))}
 
-                    <div className='mt-15'>
+
+                    <div className='mt-15 px-5'>
                         <h1 className='text-3xl text-blue-500 font-bold my-5'>Add Obstacles</h1>
                         <form className="space-y-4 grid grid-cols-3 gap-4">
                             <div className="col-span-1 mt-4">
@@ -179,8 +190,11 @@ const HomePage = () => {
                 </div>
 
                 <div className='h-full flex justify-center items-center pr-10'>
-                    <BubbleLine bubbleData={obstacles} positionData={[startingPosition, endPosition]} />
+                    <BubbleLine bubbleData={obstacles} positionData={[startingPosition, endPosition]} lineData={lineData}/>
                 </div>
+            </div>
+            <div className='w-full mb-10 flex justify-center items-center'>
+                <button className='bg-green-500 text-white w-[20rem] h-[2.5rem] text-2xl  rounded-xl' onClick={handleGetShortestPath}>Get Shortest Path</button>
             </div>
         </>
     );
