@@ -1,4 +1,3 @@
-import React from 'react';
 import ParticleAnimation from "../components/LandingPage/ParticleAnimation";
 import animationConfig from "../json/particles.json";
 import LandingPageHeader from "../components/LandingPage/Header";
