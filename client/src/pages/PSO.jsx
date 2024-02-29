@@ -61,10 +61,9 @@ const PSO = () => {
 
     try {
       const response = await fetch("http://127.0.0.1:8000/shortest-path", {
-        method: "POST", // Adjust the method based on your API requirements
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Add any other headers if needed
         },
         body: JSON.stringify(formState), // Adjust the body based on your API requirements
       });
@@ -106,7 +105,9 @@ const PSO = () => {
             ) : result != null ? (
               <PSOResult imageUrl={result.imageUrl} />
             ) : (
-              "I love you"
+              <div className="w-2/5  rounded-md text-4xl font-bold  text-gray-700 flex text-center">
+                Let's find the shortest path!
+              </div>
             )}
           </div>
         </div>
