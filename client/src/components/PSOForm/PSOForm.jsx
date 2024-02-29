@@ -9,7 +9,7 @@ const PSOForm = ({
 }) => {
   const { startingPosition, targetPosition, obstacles } = formState;
   return (
-    <div>
+    <div className="w-1/2">
       <div className="p-10 px-16 flex flex-col gap-4 w-4/5">
         <h2 className="text-4xl font-bold mb-4">Pathfinding Configuration</h2>
         <div className="flex gap-5">
@@ -70,7 +70,7 @@ const PSOForm = ({
               id={`obstacleX${index}`}
               className="w-full px-3 py-2 mb-2 border rounded-md focus:outline-none focus:border-blue-500"
               type="number"
-              placeholder={`Obstacle ${index + 1} x`}
+              placeholder={`X`}
               value={obstacle.x}
               onChange={(e) => onObstacleChange(index, "x", e.target.value)}
             />
@@ -81,7 +81,7 @@ const PSOForm = ({
               id={`obstacleY${index}`}
               className="w-full px-3 py-2 mb-2 border rounded-md focus:outline-none focus:border-blue-500"
               type="number"
-              placeholder={`Obstacle ${index + 1} y`}
+              placeholder={`Y`}
               value={obstacle.y}
               onChange={(e) => onObstacleChange(index, "y", e.target.value)}
             />
@@ -92,7 +92,7 @@ const PSOForm = ({
               id={`obstacleRadius${index}`}
               className="w-full px-3 py-2 mb-2 border rounded-md focus:outline-none focus:border-blue-500"
               type="number"
-              placeholder={`Obstacle ${index + 1} Radius`}
+              placeholder={`Radius`}
               value={obstacle.radius}
               onChange={(e) =>
                 onObstacleChange(index, "radius", e.target.value)

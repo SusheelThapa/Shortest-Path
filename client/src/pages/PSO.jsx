@@ -2,8 +2,12 @@ import { useState } from "react";
 import Layout from "../layout/Layout";
 import PSOForm from "../components/PSOForm";
 import PSOResult from "../components/PSOResult";
+import CircularLoader from "../components/CircularLoader/CircularLoader";
 
 const PSO = () => {
+  const [loading, setLoading] = useState(false);
+  const [result] = useState(null);
+
   const [formState, setFormState] = useState({
     startingPosition: { x: "", y: "" },
     targetPosition: { x: "", y: "" },
@@ -50,9 +54,16 @@ const PSO = () => {
       ),
     }));
   };
-
   const handlePSOSubmit = async () => {
-    console.log(formState);
+    setLoading(true);
+
+    try {
+      // Perform PSO logic or API call using formState
+    } catch (error) {
+      console.error("Error in PSO calculation:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -69,7 +80,13 @@ const PSO = () => {
             onObstacleChange={handleObstacleChange}
             onPSOSubmit={handlePSOSubmit}
           />
-          <PSOResult />
+          {loading ? (
+            <CircularLoader />
+          ) : result != null ? (
+            <PSOResult />
+          ) : (
+            "I love you"
+          )}
         </div>
       </div>
     </Layout>
