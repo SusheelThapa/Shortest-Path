@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const PSOForm = ({
   formState,
   onStartingPositionChange,
@@ -124,6 +126,32 @@ const PSOForm = ({
       </div>
     </div>
   );
+};
+
+PSOForm.propTypes = {
+  formState: PropTypes.shape({
+    startingPosition: PropTypes.shape({
+      x: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      y: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    }),
+    targetPosition: PropTypes.shape({
+      x: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      y: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    }),
+    obstacles: PropTypes.arrayOf(
+      PropTypes.shape({
+        x: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        y: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        radius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      })
+    ),
+  }),
+  onStartingPositionChange: PropTypes.func.isRequired,
+  onTargetPositionChange: PropTypes.func.isRequired,
+  onAddObstacle: PropTypes.func.isRequired,
+  onRemoveObstacle: PropTypes.func.isRequired,
+  onObstacleChange: PropTypes.func.isRequired,
+  onPSOSubmit: PropTypes.func.isRequired,
 };
 
 export default PSOForm;
