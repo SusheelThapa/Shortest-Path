@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const PSOResult = ({ imageUrl }) => (
   <div>
     <img
@@ -8,5 +10,9 @@ const PSOResult = ({ imageUrl }) => (
     />
   </div>
 );
+
+PSOResult.propTypes = {
+  imageUrl: PropTypes.string.isRequired,
+};
 
 export default PSOResult;

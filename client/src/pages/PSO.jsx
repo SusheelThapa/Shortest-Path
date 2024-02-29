@@ -106,7 +106,7 @@ const PSO = () => {
               <PSOResult imageUrl={result.imageUrl} />
             ) : (
               <div className="w-2/5  rounded-md text-4xl font-bold  text-gray-700 flex text-center">
-                Let's find the shortest path!
+                Let&apos;s find the shortest path!
               </div>
             )}
           </div>

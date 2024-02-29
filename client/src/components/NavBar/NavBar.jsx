@@ -7,8 +7,9 @@ const NavBar = () => {
       <div className="mx-48 text-white flex justify-center items-center w-screen">
         <Link to="/">
           <div className="flex gap-2 items-end justify-end">
-            {/* <img src={""} alt="Logo" className="w-10 rounded-full" /> */}
-            <div className="text-4xl font-extrabold ">PSO</div>
+            <div className="text-4xl font-extrabold hover:text-green-500">
+              PSO
+            </div>
           </div>
         </Link>
         {/* navigation menu */}
