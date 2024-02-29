@@ -49,12 +49,19 @@ const SampleResult = () => {
     <div>
       <NavBar />
       <Layout>
-        <div className={`container mx-auto my-8 ${lightboxOpen ? "blur" : ""}`}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+        <div
+          className={`container mx-auto my-16 ${
+            lightboxOpen ? "blur-3xl" : ""
+          }`}
+        >
+          <h1 className="text-green-800 mb-20 text-6xl font-semibold underline text-center my-10">
+            Sample Result of Shortest Part Finder
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-16">
             {images.map((image, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center result-container text-center p-4 border rounded-md overflow-hidden cursor-pointer"
+                className="flex flex-col items-center shadow-xl text-center p-4 border rounded-3xl overflow-hidden cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
                 <img
