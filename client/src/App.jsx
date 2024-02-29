@@ -1,12 +1,11 @@
-import HomePage from "./pages/HomePage"
+import TeamPage from "./pages/TeamPage";
 
 function App() {
-
   return (
     <>
-      <HomePage />
+      <TeamPage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
