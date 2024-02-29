@@ -7,7 +7,7 @@ const PSO = () => {
   return (
     <Layout>
       <div>Shortest Path Finder</div>
-      <div>
+      <div className="flex justify-center items-center space-x-2">
         <PSOForm />
         <PSOResult />
       </div>

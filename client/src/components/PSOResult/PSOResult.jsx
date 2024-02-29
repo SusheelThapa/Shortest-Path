@@ -1,5 +1,5 @@
 const PSOResult = () => {
-  return <div>PSOResult</div>;
+  return <div className="w-1/2">PSOResult</div>;
 };
 
 export default PSOResult;
