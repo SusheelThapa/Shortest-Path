@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import landingImage from '../../Images/landingImage.webp'
 const LandingPageHero = () => {
   return (
     <div className="grid md:grid-cols-2">
@@ -22,7 +22,7 @@ const LandingPageHero = () => {
       </div>
       <div className="flex justify-center items-center">
         <img
-          src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*pGsUNDC03IjJeIbEyGLsnQ.png"
+          src={landingImage}
           alt=""
           className="filter brightness-100 contrast-125 shadow-lg"
         />
