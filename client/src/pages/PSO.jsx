@@ -6,6 +6,8 @@ import CircularLoader from "../components/CircularLoader/CircularLoader";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer";
 
+const backend_api_endpoint = import.meta.env.VITE_BACKEND_URL;
+
 const PSO = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -56,11 +58,12 @@ const PSO = () => {
       ),
     }));
   };
+
   const handlePSOSubmit = async () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/shortest-path", {
+      const response = await fetch(`${backend_api_endpoint}/shortest-path`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
